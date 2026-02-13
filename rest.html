@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مطعم فود هب - FoodHub Restaurant</title>
+    
+    <!-- ربط ملف CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- خطوط جوجل العربية -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <!-- ========== الترويسة الرئيسية ========== -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <!-- الشعار -->
+                <div class="logo">
+                    <h1>🍕 فود هب</h1>
+                    <p class="tagline">مطعم فاخر</p>
+                </div>
+                
+                <!-- قائمة التنقل -->
+                <nav class="nav">
+                    <!-- شريط البحث -->
+                    <div class="search-container">
+                        <input 
+                            type="text" 
+                            id="searchInput" 
+                            class="search-input" 
+                            placeholder="ابحث عن طبق..."
+                        >
+                        <span class="search-icon">🔍</span>
+                    </div>
+                    
+                    <!-- زر تبديل الوضع الليلي/النهاري -->
+                    <button class="theme-toggle" id="themeToggle" aria-label="تبديل الوضع">
+                        <span class="sun-icon">☀️</span>
+                        <span class="moon-icon">🌙</span>
+                    </button>
+                    
+                    <!-- زر السلة -->
+                    <button class="cart-btn" id="cartBtn" aria-label="السلة">
+                        <span class="cart-icon">🛒</span>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========== قسم الترحيب (Hero) ========== -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2 class="hero-title">مرحباً بك في فود هب</h2>
+                <p class="hero-description">اكتشف أشهى الأطباق من قائمتنا المميزة</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== أدوات التحكم (الفلاتر والترتيب) ========== -->
+    <section class="controls">
+        <div class="container">
+            <div class="controls-wrapper">
+                <!-- أزرار الفئات -->
+                <div class="categories" id="categories">
+                    <button class="category-btn active" data-category="all">
+                        الكل
+                    </button>
+                    <button class="category-btn" data-category="pizza">
+                        🍕 بيتزا
+                    </button>
+                    <button class="category-btn" data-category="burger">
+                        🍔 برجر
+                    </button>
+                    <button class="category-btn" data-category="pasta">
+                        🍝 باستا
+                    </button>
+                    <button class="category-btn" data-category="salad">
+                        🥗 سلطات
+                    </button>
+                    <button class="category-btn" data-category="dessert">
+                        🍰 حلويات
+                    </button>
+                    <button class="category-btn" data-category="drink">
+                        🥤 مشروبات
+                    </button>
+                </div>
+                
+                <!-- قائمة الترتيب -->
+                <div class="sort-container">
+                    <label for="sortSelect">ترتيب حسب:</label>
+                    <select id="sortSelect" class="sort-select">
+                        <option value="default">مميز</option>
+                        <option value="price-low">السعر: من الأقل للأعلى</option>
+                        <option value="price-high">السعر: من الأعلى للأقل</option>
+                        <option value="rating">الأعلى تقييماً</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== قسم القائمة (عرض الأطباق) ========== -->
+    <section class="menu">
+        <div class="container">
+            <!-- هنا سيتم إدراج بطاقات الطعام عبر JavaScript -->
+            <div class="menu-grid" id="menuGrid">
+                <!-- البطاقات ستظهر هنا ديناميكياً -->
+            </div>
+            
+            <!-- رسالة عند عدم وجود نتائج -->
+            <div class="no-results" id="noResults">
+                <p>❌ لا توجد نتائج مطابقة للبحث</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== الشريط الجانبي للسلة ========== -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <!-- رأس السلة -->
+        <div class="cart-header">
+            <h3>🛒 سلة المشتريات</h3>
+            <button class="cart-close" id="cartClose" aria-label="إغلاق السلة">
+                ✕
+            </button>
+        </div>
+        
+        <!-- محتوى السلة (العناصر) -->
+        <div class="cart-items" id="cartItems">
+            <!-- عناصر السلة ستظهر هنا عبر JavaScript -->
+        </div>
+        
+        <!-- رسالة السلة الفارغة -->
+        <div class="cart-empty" id="cartEmpty">
+            <p>🛒 السلة فارغة</p>
+            <span>ابدأ بإضافة أطباق لذيذة!</span>
+        </div>
+        
+        <!-- تذييل السلة (الإجمالي والأزرار) -->
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>الإجمالي:</span>
+                <span class="total-price" id="totalPrice">0.00 ر.س</span>
+            </div>
+            <button class="btn-checkout">إتمام الطلب</button>
+            <button class="btn-clear" id="clearCart">مسح السلة</button>
+        </div>
+    </div>
+    
+    <!-- الخلفية المعتمة عند فتح السلة -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <!-- ========== التذييل ========== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>🍕 فود هب</h3>
+                    <p>حيث كل وجبة تحفة فنية</p>
+                </div>
+                <div class="footer-info">
+                    <p>© 2026فود هب - جميع الحقوق محفوظة</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ربط ملف JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
